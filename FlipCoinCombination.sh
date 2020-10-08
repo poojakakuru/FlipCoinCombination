@@ -1,38 +1,40 @@
 #!/bin/bash -x
 
 echo "Welcome to FlipCoin Combination Program"
-Coin=$(( RANDOM%2 ))
-echo $Coin
-if [ $Coin -eq 0 ]
+
+isHead=1
+randomCheck=$(( RANDOM%2 ))
+
+if [ $isHead -eq $randomCheck ]
 then
    echo "Head"
 else
    echo "Tail"
 fi
 
-declare -A Coin;
+declare -A coin;
 
-Coin[head]=0;
-Coin[tail]=0;
+coin[head]=0;
+coin[tail]=0;
 count=0;
 
 addtoDictionary(){
 if [ $1 -eq 0 ]
 then
-   Coin[head]=`expr ${coin[head]}+1`;
+   coin[heads]=`expr ${coin[heads]} + 1`;
 else
-   Coin[tail]=`expr ${coin[tail]}+1`;
+   coin[tails]=`expr ${coin[tails]} + 1`;
 fi
 }
 while [ $count -le 25 ]
 do
-   flip=$(( RANDOM%2 ));
+   flip=$(( RANDOM%4 ));
    addtoDictionary $flip;
    ((++count))
 done
 
-perhead=`expr ${coin[head]}\*100`;
-perhead=`expr $perhead/25`;
+perhead=`expr ${coin[heads]} \* 100`;
+perhead=`expr $perhead / 25`;
 pertail=`expr 100 - $perhead`;
 echo "percentage of heads is $perhead"
 echo "percentage of tails is $pertail"
@@ -46,30 +48,30 @@ count=0;
 addtoDictionary(){
 if [ $1 -eq 0 ]
 then
-   coin[headhead]=`expr ${coin[headhead]}+1`;
+   coin[headhead]=`expr ${coin[headhead]} + 1`;
 elif [ $1 -eq 1 ]
 then
-   coin[tailtail]=`expr ${coin[tailtail]}+1`;
+   coin[tailtail]=`expr ${coin[tailtail]} + 1`;
 else
-   coin[headtail]=`expr ${coin[headtail]}+1`;
+   coin[headtail]=`expr ${coin[headtail]} + 1`;
 fi
 }
 
 while [ $count -le 25 ]
 do
-flip=$(( RANDOM%3 ));
-addtoDictionary $flip;
-((++count))
+   flip=$(( RANDOM%3 ));
+   addtoDictionary $flip;
+   ((++count))
 done
 
-perhead=`expr ${coin[headheaf]}\*100`;
-perhead=`expr $perhead /25`;
-pertail=`expr ${coin[tailtail]}\*100`;
-pertail=`expr $pertail/25`;
-perheadtail=`expr ${coin[headtail]}\*100`;
-perheadtail=`expr $perheadtail/25`;
-echo "Percentage of headhead is $perhead"
-echo "Percentage of tailtail is $pertail"
+perheadhead=`expr ${coin[headhead]} \* 100`;
+perheadhead=`expr $perheadhead / 25`;
+pertailtail=`expr ${coin[tailtail]} \* 100`;
+pertailtail=`expr $pertailtail / 25`;
+perheadtail=`expr ${coin[headtail]} \* 100`;
+perheadtail=`expr $perheadtail / 25`;
+echo "Percentage of headhead is $perheadhead"
+echo "Percentage of tailtail is $pertailtail"
 echo "Percentage of headtail is $perheadtail"
 
 declare -A coin;
@@ -80,14 +82,14 @@ coin[headheadtail]=0;
 coin[headtailtail]=0;
 count=0;
 
-addtoDictionary(){
-if [$1 -eq 0 ]
+addtoDictionary() {
+if [ $1 -eq 0 ]
 then
    coin[headheadhead]=`expr ${coin[headheadhead]} + 1`;
-elif [$1 -eq 1 ]
+elif [ $1 -eq 1 ]
 then
    coin[tailtailtail]=`expr ${coin[tailtailtail]} + 1`;
-elif [$1 -eq 2]
+elif [ $1 -eq 2 ]
 then
    coin[headheadtail]=`expr ${coin[headheadtail]} + 1`;
 else
@@ -102,14 +104,14 @@ do
    ((++count))
 done
 
-perheadheadhead=`expr ${coin[headheadhead]} \*100`;
-perheadheadhead=`expr $perheadheadhead /25`;
-pertailtailtail=`expr ${coin[tailtailtail]} \*100`;
-pertailtailtail=`expr $pertailtailtail /25`;
-perheadheadtail=`expr ${coin[headheadtail]} \*100`;
-perheadheadtail=`expr $perheadheadtail /25`;
-perheadtailtail=`expr ${coin[headtailtail]} \*100`;
-perheadtailtail=`expr $perheadtailtail /25`;
+perheadheadhead=`expr ${coin[headheadhead]} \* 100`;
+perheadheadhead=`expr $perheadheadhead / 25`;
+pertailtailtail=`expr ${coin[tailtailtail]} \* 100`;
+pertailtailtail=`expr $pertailtailtail / 25`;
+perheadheadtail=`expr ${coin[headheadtail]} \* 100`;
+perheadheadtail=`expr $perheadheadtail / 25`;
+perheadtailtail=`expr ${coin[headtailtail]} \* 100`;
+perheadtailtail=`expr $perheadtailtail / 25`;
 echo "percentage of headheadhead is $perheadheadhead"
 echo "percentage of tailtailtail is $pertailtailtail"
 echo "percentage of headheadtail is $perheadheadtail"
