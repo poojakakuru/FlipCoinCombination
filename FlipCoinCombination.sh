@@ -114,3 +114,25 @@ echo "percentage of headheadhead is $perheadheadhead"
 echo "percentage of tailtailtail is $pertailtailtail"
 echo "percentage of headheadtail is $perheadheadtail"
 echo "percentage of headtailtail is $perheadtailtail"
+
+
+declare -A coinsort
+
+coinsort[1]=$perhead
+coinsort[2]=$pertail
+coinsort[3]=$perheadhead
+coinsort[4]=$pertailtail
+coinsort[5]=$perheadtail
+coinsort[6]=$perheadheadhead
+coinsort[7]=$pertailtailtail
+coinsort[8]=$perheadheadtail
+coinsort[9]=$perheadtailtail
+echo "dictionary :"${coinsort[@]}
+variable=${coinsort[@]}
+for value in $variable
+do
+   array+=($value)
+done
+   echo "array value are:"${array[@]}
+sorting=`echo ${array[@]} | awk 'BEGIN{RS=" "} {print $1}' | sort -n`
+echo $sorting
